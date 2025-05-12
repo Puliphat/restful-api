@@ -1,0 +1,10 @@
+@"
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+dist/
+.env
+.DS_Store
+* text=auto eol=lf
+"@ | Out-File -Encoding utf8 .gitignore

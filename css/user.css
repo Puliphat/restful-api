@@ -1,0 +1,425 @@
+/* ใช้ styling จาก styles.css */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Sarabun', Arial, sans-serif;
+}
+
+:root {
+  --primary: #4361ee;
+  --secondary: #3a0ca3;
+  --accent: #4cc9f0;
+  --light: #f8f9fa;
+  --dark: #212529;
+  --success: #4caf50;
+  --danger: #f44336;
+  --warning: #ff9800;
+}
+
+body {
+  background-color: #f0f2f5;
+  color: var(--dark);
+  line-height: 1.6;
+  padding: 30px;
+  background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  min-height: 100vh;
+}
+
+a {
+  display: inline-block;
+  margin-bottom: 20px;
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: bold;
+  padding: 10px 18px;
+  border-radius: 6px;
+  background-color: rgba(255, 255, 255, 0.8);
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+a:hover {
+  background-color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Fix for anchor tags with buttons */
+a:has(button),
+#user-list a {
+  padding: 0;
+  margin: 0;
+  background: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+a:has(button):hover,
+#user-list a:hover {
+  background: none;
+  transform: none;
+  box-shadow: none;
+}
+
+/* h2 กลับมาอยู่นอกกล่อง */
+h2 {
+  color: var(--primary);
+  margin-bottom: 30px;
+  font-size: 28px;
+  font-weight: bold;
+  text-align: center;
+  padding-bottom: 10px;
+  border-bottom: 2px solid rgba(67, 97, 238, 0.2);
+}
+
+/* สไตล์สำหรับกล่องผู้ใช้ */
+#user-list {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  background-color: white;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* ลบรูปแบบ h2 ในกล่อง */
+#user-list h2 {
+  display: none;
+}
+
+/* จัดรูปแบบรายการผู้ใช้ */
+#user-list > div > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  margin-bottom: 12px;
+  border-radius: 10px;
+  background-color: var(--light);
+  transition: all 0.2s ease;
+  border-left: 3px solid transparent;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+#user-list > div > div:hover {
+  border-left: 3px solid var(--primary);
+  background-color: rgba(67, 97, 238, 0.05);
+  transform: translateX(3px);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* ข้อมูลผู้ใช้ด้านซ้าย */
+.user-info {
+  font-weight: 500;
+  font-size: 16px;
+  color: var(--dark);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.user-info:before {
+  content: "👤";
+  font-size: 18px;
+  color: var(--primary);
+}
+
+/* กลุ่มปุ่มด้านขวา */
+.button-group {
+  display: flex;
+  gap: 10px;
+}
+
+/* ปุ่มต่างๆ - แก้ไขให้รองรับทุกรูปแบบที่อาจมี */
+.btn, 
+.button, 
+button,
+#user-list button,
+#user-list input[type="button"],
+#user-list input[type="submit"] {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 14px;
+  transition: all 0.3s;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  color: white;
+  letter-spacing: 0.5px;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* เอฟเฟคปุ่มเมื่อคลิก */
+.btn:active, 
+.button:active, 
+button:active,
+#user-list button:active,
+#user-list input[type="button"]:active,
+#user-list input[type="submit"]:active {
+  transform: scale(0.95);
+}
+
+/* ปุ่มแก้ไข */
+.btn-edit, 
+.edit-btn, 
+.edit, 
+button[data-action="edit"],
+button.edit,
+button[onclick*="edit"],
+a button {
+  background-color: #2196F3; /* สีน้ำเงิน */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 100px;
+}
+
+.btn-edit:before, 
+.edit-btn:before, 
+.edit:before, 
+button[data-action="edit"]:before,
+button.edit:before,
+button[onclick*="edit"]:before,
+a button:before {
+  content: "✏️ ";
+  margin-right: 5px;
+  font-size: 14px;
+}
+
+/* ปุ่มลบ */
+.btn-delete, 
+.delete-btn, 
+.delete, 
+button[data-action="delete"],
+button.delete,
+button[onclick*="delete"] {
+  background-color: var(--danger);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 100px;
+}
+
+.btn-delete:before, 
+.delete-btn:before, 
+.delete:before, 
+button[data-action="delete"]:before,
+button.delete:before,
+button[onclick*="delete"]:before {
+  content: "🗑️ ";
+  margin-right: 5px;
+  font-size: 14px;
+}
+
+/* Hover effects */
+.btn:hover, 
+.button:hover, 
+button:hover,
+#user-list button:hover,
+#user-list input[type="button"]:hover,
+#user-list input[type="submit"]:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Hover ปุ่มแก้ไข */
+.btn-edit:hover, 
+.edit-btn:hover, 
+.edit:hover, 
+button[data-action="edit"]:hover,
+button.edit:hover,
+button[onclick*="edit"]:hover,
+a button:hover {
+  background-color: #0D47A1; /* น้ำเงินเข้มเมื่อ hover */
+}
+
+/* Hover ปุ่มลบ */
+.btn-delete:hover, 
+.delete-btn:hover, 
+.delete:hover, 
+button[data-action="delete"]:hover,
+button.delete:hover,
+button[onclick*="delete"]:hover {
+  background-color: #d32f2f;
+}
+
+/* ฟอร์มค้นหา */
+.search-form {
+  margin-bottom: 30px;
+  display: flex;
+  gap: 10px;
+  padding: 20px;
+  background-color: var(--light);
+  border-radius: 10px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.06);
+}
+
+.search-input {
+  flex: 1;
+  padding: 12px 15px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: all 0.3s;
+  background-color: white;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+}
+
+.btn-search {
+  background-color: var(--primary);
+  padding: 12px 20px;
+}
+
+.btn-search:hover {
+  background-color: var(--secondary);
+}
+
+/* สถานะการโหลด */
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  color: #777;
+  font-size: 16px;
+}
+
+/* กรณีไม่มีข้อมูล */
+.no-data {
+  text-align: center;
+  padding: 40px 0;
+  color: #777;
+  background-color: var(--light);
+  border-radius: 10px;
+  font-size: 16px;
+}
+
+/* ปรับปรุงสไตล์ข้อความไม่มีข้อมูล */
+#no-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  margin: 30px auto;
+  max-width: 400px;
+  border: 1px dashed rgba(0, 0, 0, 0.12);
+  color: #555;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+#no-content:before {
+  content: "📭";
+  font-size: 48px;
+  margin-bottom: 20px;
+  color: var(--primary);
+  opacity: 0.7;
+}
+
+/* ข้อความแจ้งเตือน */
+.message {
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.success {
+  background-color: rgba(76, 175, 80, 0.15);
+  color: var(--success);
+  border-left: 4px solid var(--success);
+}
+
+.error {
+  background-color: rgba(244, 67, 54, 0.15);
+  color: var(--danger);
+  border-left: 4px solid var(--danger);
+}
+
+/* ปุ่มเพิ่มผู้ใช้ */
+.add-user-btn {
+  display: block;
+  text-align: center;
+  margin: 0 auto 30px;
+  background-color: var(--success);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-weight: bold;
+  transition: all 0.3s;
+  width: 200px;
+}
+
+.add-user-btn:hover {
+  background-color: #388e3c;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  body {
+    padding: 15px;
+  }
+  
+  #user-list {
+    padding: 25px;
+  }
+  
+  .search-form {
+    flex-direction: column;
+    padding: 15px;
+  }
+  
+  .user-actions {
+    flex-direction: column;
+  }
+  
+  .btn {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .user-content {
+    grid-template-columns: 1fr;
+  }
+  
+  #user-list table {
+    display: block;
+    overflow-x: auto;
+  }
+  
+  #user-list th, 
+  #user-list td {
+    padding: 10px;
+  }
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.user-card, 
+#user-list tr,
+#user-list li {
+  animation: fadeIn 0.3s ease-out;
+}
