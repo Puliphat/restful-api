@@ -1,3 +1,5 @@
+This workshop focuses on creating a RESTful API for the backend using CRUD operations for user form data. build the API and test it with Postman before integrating it with the frontend. Credit to Mikelopster for organizing this workshop.
+
 Stack : html css js node.js mysql 
 
 สร้าง data-table ชื่อ tutorial
